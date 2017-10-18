@@ -6,23 +6,30 @@ class cylinder{
 private:
 	double radius;
 	double height;
+	double v;
 public:
-	cylinder(double &radius,double &height)
+	cylinder(double r,double h)
 	{
-		PI*pow(radius,2)*height;
-		return 0;
+		radius=r;
+		height=h;
 	}
-	vol()
+	double run_vol(){
+		v=PI*pow(radius,2)*height;
+		return v;
+	}
+	void vol()
 	{
-		cout<<"the cylinder volume is:"cout<<cylinder();
+		cout<<"the cylinder volume is:"<<v<<endl;
 	}
 };
 main()
 {
+//	cylinder c;
 	double i,j;
-	cout<<"pleater enter a number which with radius and height:"cout<<endl;
+	cout<<"pleater enter a number which with radius and height:"<<endl;
 	cin>>i>>j;
-	cylinder.cylinder(i,j);
-	cylinder.vol();
+	cylinder c(i,j);
+	c.run_vol();
+	c.vol();
 	return 0;
 }
