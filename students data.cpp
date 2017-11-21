@@ -1,49 +1,63 @@
 #include<iostream>
+#include<string>
 using namespace std;
-#define A 5;//¿ØÖÆÑ§ÉúÊäÈë×ÜÁ¿
 class data{
 private:
-	char *name;//ĞÕÃû
-	int *stu_num;//Ñ§ºÅ
-	float score;//¸öÈË³É¼¨
-	static int total_stu;//Ñ§Éú×ÜÈËÊı
-	static float total_s;//Ñ§Éú×Ü³É¼¨
-	float ave_score;//Æ½¾ù³É¼¨
+	char *name;//å§“å
+	int stu_num;//å­¦å·
+	float score;//ä¸ªäººæˆç»©
+	static int total_stu;//å­¦ç”Ÿæ€»äººæ•°
+	static float total_s;//å­¦ç”Ÿæ€»æˆç»©
+	float ave_score;//å¹³å‡æˆç»©
 public:
 	data(){};
-	data(char *n,int *s_n,int s){
-		*name=new char[strlen(*n)+1];
-		*stu_num=*s_n;
+	data(char *n,int s_n,float s){
+		name=new char[strlen(n)+1];
+		strcpy(name,n);
+		stu_num=s_n;
 		score=s;
 	}
 	stu_score(){
 		++total_stu;
 		total_s+=score;
 		ave_score=total_s/total_stu;
-		return 0;
 	}
 	void data_show(){
-		cout<<"\n Ñ§ÉúĞÕÃû£º"<<*name;
-		cout<<"\n Ñ§ÉúÑ§ºÅ£º"<<*stu_num;
-		cout<<"\n Ñ§Éú³É¼¨£º"<<score;
-		cout<<"\n Ñ§Éú×ÜÈËÊı£º"<<total_stu;
-		cout<<"\n Ñ§Éú×Ü³É¼¨£º"<<total_s;
-		cout<<"\n Ñ§ÉúÆ½¾ù³É¼¨£º"<<ave_score;
+		cout<<"\n å­¦ç”Ÿå§“åï¼š"<<name;
+		cout<<"\n å­¦ç”Ÿå­¦å·ï¼š"<<stu_num;
+		cout<<"\n å­¦ç”Ÿæˆç»©ï¼š"<<score;
+		cout<<"\n å­¦ç”Ÿæ€»äººæ•°ï¼š"<<total_stu;
+		cout<<"\n å­¦ç”Ÿæ€»æˆç»©ï¼š"<<total_s;
+		cout<<"\n å­¦ç”Ÿå¹³å‡æˆç»©ï¼š"<<ave_score<<endl;
 	}
 };
-int data::total_stu=0;//Ñ§ÉúÈËÊı³õÊ¼»¯·½Ê½£¬Ò²¿É²»Ğ´Ä¬ÈÏÎª0£»
+int data::total_stu=0;//å­¦ç”Ÿäººæ•°åˆå§‹åŒ–æ–¹å¼ï¼Œä¹Ÿå¯ä¸å†™é»˜è®¤ä¸º0ï¼›
+float data::total_s=0;
+main(){
+	data stu_data1("é©¬äº‘",20171011,60);
+	stu_data1.stu_score();
+	stu_data1.data_show();
+	data stu_data2("äº‘æ –",20171012,90);
+	stu_data2.stu_score();
+	stu_data2.data_show();
+	data stu_data3("è¾¾æ‘©é™¢",20171013,100);
+	stu_data3.stu_score();
+	stu_data3.data_show();
+	return 0;
+}
+/*
 main(){
 	data stu_data[A];
-	cout<<"please enter a student date (ĞÕÃû¡¢Ñ§ºÅ¡¢³É¼¨) :"<<endl;
+	cout<<"please enter a student date (å§“åã€å­¦å·ã€æˆç»©) :"<<endl;
 	char *n;
-	int *s_n;
+	int s_n;
 	float s;
 	for(int i=0;i<A;i++)
 	{
-		cin>>*n>>*s_n>>s;
-		stu_data[i]=(*n,*s_n,s);
+		cin>>*n>>s_n>>s;
+		stu_data[i]=(*n,s_n,s);
 		stu_data[i].stu_score();
 		stu_data[i].data_show();
 	}
 	return 0;
-}
+}*/
